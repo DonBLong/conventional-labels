@@ -12,9 +12,6 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: Clone repository
-        uses: actions/checkout@v6
-
       - name: conventional-labels
         uses: ./
         with:
