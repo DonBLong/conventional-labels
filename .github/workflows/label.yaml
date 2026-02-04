@@ -13,10 +13,11 @@ jobs:
 
     steps:
       - name: conventional-labels
-        uses: DonBLong/conventional-labels@v0.0.0
+        uses: DonBLong/conventional-labels@main
         with:
           map: |
             feat: enhancement, feature
             perf: enhancement, performance
             fix: bug, fix
             docs: documentation
+          replace: true
