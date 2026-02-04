@@ -1,0 +1,28 @@
+name: Label
+
+on:
+  pull_request_target:
+    types: [opened, edited, synchronize]
+  issues:
+    types: [opened, edited]
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: conventional-labels
+        uses: DonBLong/conventional-labels@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          map: |
+            feat: enhancement, feature
+            perf: enhancement, performance
+            fix: bug, fix
+            docs: documentation
+          breaking-change: breaking
+          sources: commits
+          replace: true
