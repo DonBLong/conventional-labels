@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: conventional-labels
-        uses: ./
+        uses: DonBLong/conventional-labels@v0.0.0
         with:
           map: |
             feat: enhancement, feature
