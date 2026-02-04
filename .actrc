@@ -1,0 +1,6 @@
+--platform=ubuntu-latest=catthehacker/ubuntu:act-latest
+--workflows=tests/mocks/.github/workflows
+--action-offline-mode=true
+--reuse=true
+--pull=false
+--rebuild=false
