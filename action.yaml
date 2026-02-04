@@ -1,0 +1,35 @@
+name: "conventional-labels"
+description: "Labels pull requests based on conventional commits"
+author: DonBLong
+
+inputs:
+  token:
+    description: "Github token"
+    default: ${{ github.token }}
+
+  map:
+    description: "Commit-prefix-to-labels map. Usage: `<prefix>: <label>, <label>`.... Labels must be separated by a ','. Entries must be separated by newlines."
+    default: |
+      feat: enhancement
+      perf: enhancement
+      fix: bug
+      docs: documentation
+
+  breaking-change:
+    description: "Labels to be added to pull requests with breaking changes. Breaking changes are identified according to [conventionalcommits.org](https://conventionalcommits.org)."
+    default: breaking-change
+
+  sources:
+    description: "One or more of three sources from which the commit prefixes should be parsed. `title` the pull-request's title, `body` the pull-reuest's body, and `commits` the pull-request's commit messages. Multiple values must be separated by newlines."
+    default: |
+      title
+      body
+      commits
+
+  replace:
+    description: "Whether the new labels should replace the current ones."
+    default: false
+
+runs:
+  using: node24
+  main: ./dist/index.mjs

@@ -1,0 +1,5 @@
+--platform=ubuntu-latest=catthehacker/ubuntu:act-latest
+--action-offline-mode=true
+--reuse=true
+--pull=false
+--rebuild=false
