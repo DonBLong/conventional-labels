@@ -1,0 +1,49 @@
+{
+  "name": "conventional-labels",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "A GitHub action that adds labels to issues/pull-requests based on conventional commits.",
+  "author": "DonBLong",
+  "license": "MIT",
+  "homepage": "https://github.com/DonBLong/conventional-labels#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DonBLong/conventional-labels.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DonBLong/conventional-labels/issues"
+  },
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "npx @github/local-action . src/index.ts .env",
+    "build": "tsdown --minify",
+    "bumpp": "bumpp",
+    "dev": "tsdown --watch",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@octokit/types": "^16.0.0",
+    "@octokit/webhooks-types": "^7.6.1",
+    "@types/node": "^25.0.3",
+    "@vitest/coverage-v8": "^4.0.18",
+    "bumpp": "^10.3.2",
+    "dprint": "^0.51.1",
+    "tsdown": "^0.18.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.16"
+  },
+  "dependencies": {
+    "@actions/core": "^3.0.0",
+    "@actions/github": "^9.0.0",
+    "conventional-commits-parser": "^6.2.1"
+  }
+}
