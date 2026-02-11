@@ -1,0 +1,103 @@
+name: Conventional Labels
+description: Adds labels to issues/pull-requests based on conventional commits.
+author: DonBLong
+
+inputs:
+  token:
+    description: >
+      `optional`
+
+
+      Personal access token (PAT)
+      used in adding the labels.
+
+
+          default: {{ secrets.GITHUB_TOKEN }}
+    default: ${{ github.token }}
+
+  map:
+    description: >
+      `optional`
+
+
+      Maps each commit prefix such as `feat` and `fix`
+      to one or more labels such as `feature` and `bug fix`.
+      Multiple labels must be separated by a `,` and entries
+      must be separated by newlines.
+
+
+          # Usage:
+          map: |
+            <prefix>: <label>, <label>...
+            <prefix>: <label>, <label>...
+            .
+            .
+
+          default: |
+            feat: enhancement
+            perf: enhancement
+            fix: bug
+            docs: documentation
+    default: |
+      feat: enhancement
+      perf: enhancement
+      fix: bug
+      docs: documentation
+
+  breaking-change:
+    description: >
+      `optional`
+
+
+      Labels to be added to an issue or a pull request
+      with a breaking change.
+
+
+      Breaking changes are identified according to
+      [conventionalcommits.org](https://conventionalcommits.org).
+
+          # Usage:
+          breaking-change: |
+            <label>
+            <label>
+            .
+            .
+
+
+          default: breaking-change
+    default: breaking-change
+
+  sources:
+    description: >
+      `optional`
+
+
+      What should be parsed. The title and body of the issue/pull-request,
+      or the commits of the pull request, or both.
+
+
+          default: |
+            title and body
+            commits
+    default: |
+      title and body
+      commits
+
+  replace:
+    description: >
+      `optional`
+
+
+      Whether the new labels should replace the current ones.
+
+
+          default: false
+    default: false
+
+branding:
+  color: red
+  icon: circle
+
+runs:
+  using: node24
+  main: dist/index.mjs
